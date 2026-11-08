@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,27 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { Collection } from '@stdlib/types/array';
 
 /**
-* Initialize a workspace array for performing a quarter-wave cosine transform.
+* Initializes a workspace array for performing a quarter-wave cosine transform.
 *
-* @module @stdlib/fft-base-fftpack-generic-cosqi
+* ## Notes
+*
+* -   The workspace array should have a length of at least `( 3*N ) + 34` elements.
+*
+* @param N - length of the sequence
+* @param workspace - workspace array
+* @param strideW - stride length for `workspace`
+* @param offsetW - starting index for `workspace`
+* @returns workspace array
 *
 * @example
 * var Float64Array = require( '@stdlib/array-float64' );
-* var cosqi = require( '@stdlib/fft-base-fftpack-generic-cosqi' );
 *
 * var N = 8;
 * var workspace = new Float64Array( ( 3*N ) + 34 );
@@ -45,12 +56,9 @@
 * var factors = workspace.slice( 3*N, ( 3*N ) + 4 );
 * // returns <Float64Array>[ 8, 2, 2, 4 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function cosqi<T extends Collection<number>>( N: number, workspace: T, strideW: number, offsetW: number ): T;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = cosqi;
